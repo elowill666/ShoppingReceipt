@@ -117,25 +117,25 @@ public class ShoppingReceiptTest {
         String output = outputStream.toString();
 
         assertTrue(output.contains("item              price            qty"));
-        assertTrue(output.contains("book              $17.99             1"));
+        assertTrue(output.contains("book             $17.99              1"));
         assertTrue(output.contains("potato chips      $3.99              1"));
         assertTrue(output.contains("subtotal:                       $21.98"));
         assertTrue(output.contains("tax:                             $1.80"));
         assertTrue(output.contains("total:                          $23.78"));
 
         assertTrue(output.contains("item              price            qty"));
-        assertTrue(output.contains("book              $17.99             1"));
+        assertTrue(output.contains("book             $17.99              1"));
         assertTrue(output.contains("pencils           $2.99              3"));
-        assertTrue(output.contains("subtotal:                       $21.98"));
-        assertTrue(output.contains("tax:                             $1.80"));
-        assertTrue(output.contains("total:                          $23.78"));
+        assertTrue(output.contains("subtotal:                       $26.96"));
+        assertTrue(output.contains("tax:                             $2.40"));
+        assertTrue(output.contains("total:                          $29.36"));
 
         assertTrue(output.contains("item              price            qty"));
         assertTrue(output.contains("pencils           $2.99              2"));
-        assertTrue(output.contains("shirt             $29.99             1"));
-        assertTrue(output.contains("subtotal:                       $21.98"));
-        assertTrue(output.contains("tax:                             $1.80"));
-        assertTrue(output.contains("total:                          $23.78"));
+        assertTrue(output.contains("shirt            $29.99              1"));
+        assertTrue(output.contains("subtotal:                       $35.97"));
+        assertTrue(output.contains("tax:                             $0.55"));
+        assertTrue(output.contains("total:                          $36.52"));
     }
 
 }
