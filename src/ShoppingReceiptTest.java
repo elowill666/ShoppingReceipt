@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import bean.Clothing;
 import bean.Food;
 import bean.Product;
-import shoppingreceipt.util.ReceiptUtil;
+import util.ReceiptUtil;
 
 public class ShoppingReceiptTest {
 

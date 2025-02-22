@@ -1,7 +1,7 @@
 import java.util.List;
 
 import bean.Product;
-import shoppingreceipt.util.ReceiptUtil;
+import util.ReceiptUtil;
 
 public class ReceiptService {
 
