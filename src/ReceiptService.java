@@ -15,9 +15,10 @@ public class ReceiptService {
 
         double subtotal = ReceiptUtil.getSubtotal(products);
 
-        products.forEach(product -> System.out.printf("%-18s$%-18.2f%-10d%n",
-                product.getName(), product.getPrice(), product.getQuantity()));
-
+        products.forEach(product -> {
+            String formattedPrice = String.format("$%.2f", product.getPrice());
+            System.out.printf("%-16s%7s%15d%n", product.getName(), formattedPrice, product.getQuantity());
+        });
         double tax = ReceiptUtil.getTax(products, state);
 
         double total = subtotal + tax;

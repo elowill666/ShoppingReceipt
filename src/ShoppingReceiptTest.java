@@ -8,8 +8,9 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import bean.Clothing;
-import bean.Food;
+import bean.ClothingTaxStrategy;
+import bean.FoodTaxStrategy;
+import bean.GeneralProduct;
 import bean.Product;
 import util.ReceiptUtil;
 
@@ -51,16 +52,16 @@ public class ShoppingReceiptTest {
     @Test
     public void testGetSubtotal() {
         List<Product> products = List.of(
-                new Product("book", 17.99, 1),
-                new Food("potato chips", 3.99, 1));
+                new Product("book", 17.99, 1, new GeneralProduct()),
+                new Product("potato chips", 3.99, 1, new FoodTaxStrategy()));
 
         List<Product> products2 = List.of(
-                new Product("book", 17.99, 1),
-                new Product("pencils", 2.99, 3));
+                new Product("book", 17.99, 1, new GeneralProduct()),
+                new Product("pencils", 2.99, 3, new GeneralProduct()));
 
         List<Product> products3 = List.of(
-                new Product("pencils", 2.99, 2),
-                new Clothing("shirt", 29.99, 1));
+                new Product("pencils", 2.99, 2, new GeneralProduct()),
+                new Product("shirt", 29.99, 1, new ClothingTaxStrategy()));
 
         double subtotal = ReceiptUtil.getSubtotal(products);
         double subtotal2 = ReceiptUtil.getSubtotal(products2);
@@ -76,9 +77,9 @@ public class ShoppingReceiptTest {
 
     @Test
     public void testGetTax() {
-        Product product = new Product("book", 17.99, 1);
-        Food food = new Food("potato chips", 3.99, 1);
-        Clothing clothing = new Clothing("shirt", 29.99, 1);
+        Product product = new Product("book", 17.99, 1, new GeneralProduct());
+        Product food = new Product("potato chips", 3.99, 1, new FoodTaxStrategy());
+        Product clothing = new Product("shirt", 29.99, 1, new ClothingTaxStrategy());
 
         // CA product Tax 0.0975
         assertEquals(product.getTax("CA"), calculateTax(product.getPrice(), product.getQuantity(), 0.0975));
@@ -93,7 +94,8 @@ public class ShoppingReceiptTest {
         assertEquals(food.getTax("NY"), calculateTax(food.getPrice(), food.getQuantity(), 0));
 
         // CA clothing Tax 0.0975
-        assertEquals(clothing.getTax("CA"), calculateTax(clothing.getPrice(), clothing.getQuantity(), 0.0975));
+        assertEquals(clothing.getTax("CA"),
+                calculateTax(clothing.getPrice(), clothing.getQuantity(), 0.0975));
 
         // NY clothing Tax 0
         assertEquals(clothing.getTax("NY"), calculateTax(clothing.getPrice(), clothing.getQuantity(), 0));
