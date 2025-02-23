@@ -3,19 +3,13 @@ package bean;
 import java.util.HashMap;
 import java.util.Map;
 
+import taxstrategy.TaxStrategy;
+
 public class Product {
-    protected String name;
-    protected double price;
-    protected int quantity;
-    protected TaxStrategy taxStrategy;
-
-    protected static final Map<String, Double> TAX;
-
-    static {
-        TAX = new HashMap<>();
-        TAX.put("CA", 0.0975);
-        TAX.put("NY", 0.08875);
-    }
+    private String name;
+    private double price;
+    private int quantity;
+    private TaxStrategy taxStrategy;
 
     public Product(String name, double price, int quantity, TaxStrategy taxStrategy) {
         this.name = name;

@@ -8,10 +8,10 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import bean.ClothingTaxStrategy;
-import bean.FoodTaxStrategy;
-import bean.GeneralProduct;
 import bean.Product;
+import taxstrategy.ClothingTaxStrategy;
+import taxstrategy.FoodTaxStrategy;
+import taxstrategy.GeneralTaxStrategy;
 import util.ReceiptUtil;
 
 public class ShoppingReceiptTest {
@@ -52,15 +52,15 @@ public class ShoppingReceiptTest {
     @Test
     public void testGetSubtotal() {
         List<Product> products = List.of(
-                new Product("book", 17.99, 1, new GeneralProduct()),
+                new Product("book", 17.99, 1, new GeneralTaxStrategy()),
                 new Product("potato chips", 3.99, 1, new FoodTaxStrategy()));
 
         List<Product> products2 = List.of(
-                new Product("book", 17.99, 1, new GeneralProduct()),
-                new Product("pencils", 2.99, 3, new GeneralProduct()));
+                new Product("book", 17.99, 1, new GeneralTaxStrategy()),
+                new Product("pencils", 2.99, 3, new GeneralTaxStrategy()));
 
         List<Product> products3 = List.of(
-                new Product("pencils", 2.99, 2, new GeneralProduct()),
+                new Product("pencils", 2.99, 2, new GeneralTaxStrategy()),
                 new Product("shirt", 29.99, 1, new ClothingTaxStrategy()));
 
         double subtotal = ReceiptUtil.getSubtotal(products);
@@ -77,7 +77,7 @@ public class ShoppingReceiptTest {
 
     @Test
     public void testGetTax() {
-        Product product = new Product("book", 17.99, 1, new GeneralProduct());
+        Product product = new Product("book", 17.99, 1, new GeneralTaxStrategy());
         Product food = new Product("potato chips", 3.99, 1, new FoodTaxStrategy());
         Product clothing = new Product("shirt", 29.99, 1, new ClothingTaxStrategy());
 

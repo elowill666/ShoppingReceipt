@@ -1,4 +1,6 @@
-package bean;
+package taxstrategy;
+
+import bean.Product;
 
 public class FoodTaxStrategy implements TaxStrategy {
 

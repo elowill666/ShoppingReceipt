@@ -3,12 +3,10 @@ package util;
 import java.util.ArrayList;
 import java.util.List;
 
-import bean.Clothing;
-import bean.ClothingTaxStrategy;
-import bean.Food;
-import bean.FoodTaxStrategy;
-import bean.GeneralProduct;
 import bean.Product;
+import taxstrategy.ClothingTaxStrategy;
+import taxstrategy.FoodTaxStrategy;
+import taxstrategy.GeneralTaxStrategy;
 
 public class ReceiptUtil {
 
@@ -36,7 +34,7 @@ public class ReceiptUtil {
             switch (name) {
                 case "potato chips" -> product = new Product(name, price, quantity, new FoodTaxStrategy());
                 case "shirt" -> product = new Product(name, price, quantity, new ClothingTaxStrategy());
-                default -> product = new Product(name, price, quantity, new GeneralProduct());
+                default -> product = new Product(name, price, quantity, new GeneralTaxStrategy());
             }
             products.add(product);
         }
