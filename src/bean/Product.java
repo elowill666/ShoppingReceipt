@@ -1,8 +1,5 @@
 package bean;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import taxstrategy.TaxStrategy;
 
 public class Product {
